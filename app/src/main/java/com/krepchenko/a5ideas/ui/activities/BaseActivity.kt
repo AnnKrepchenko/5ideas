@@ -1,4 +1,4 @@
-package com.krepchenko.a5ideas.ui
+package com.krepchenko.a5ideas.ui.activities
 
 import android.app.Activity
 import android.content.Intent

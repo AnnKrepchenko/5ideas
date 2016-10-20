@@ -1,4 +1,4 @@
-package com.krepchenko.a5ideas.ui
+package com.krepchenko.a5ideas.ui.activities
 
 import android.os.Bundle
 import android.os.Handler
