@@ -12,6 +12,5 @@ class SplashActivity : BaseActivity() {
         setContentView(R.layout.activity_splash)
         val handler = Handler()
         handler.postDelayed({navigate<MainActivity>()}, 3000)
-
     }
 }

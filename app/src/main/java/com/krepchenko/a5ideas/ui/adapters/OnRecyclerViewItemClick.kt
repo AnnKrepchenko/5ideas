@@ -9,5 +9,5 @@ import java.text.FieldPosition
 
 interface OnRecyclerViewItemClick{
 
-    fun onItemClick(position: String, view:View);
+    fun onItemClick(position: Int, view:View)
 }
