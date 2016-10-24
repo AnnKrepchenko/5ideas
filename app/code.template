@@ -1,0 +1,14 @@
+package $packageName;
+
+public final class $className {
+public static final class Tables {
+<% access.tables.each { dataSet -> %>    public static final String $dataSet.name = "$dataSet.sqlName";
+<% } %>}
+
+public static final class Columns {
+<% access.tables.each { dataSet -> %>    public static final class $dataSet.name {
+<%      dataSet.fields.each { field -> %>        public static final String $field.accessor = "$field.sqlName";
+<%      } %>    }
+<% } %>}
+
+}
