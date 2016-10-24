@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.krepchenko.a5ideas.R
-import kotlinx.android.synthetic.main.item_card_idea.*
 
 /**
  * Created by ann on 10/20/16.
@@ -29,11 +28,11 @@ class IdeaAdapter : CursorRecyclerViewAdapter<IdeaAdapter.ViewHolder> {
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder?, cursor: Cursor?) {
-       // viewHolder.itemName.setText(cursor.getString(cursor.))
+        viewHolder?.itemName?.text = cursor?.getString(cursor?.getColumnIndex("name"))
+        viewHolder?.itemDesc?.text = cursor?.getString(cursor?.getColumnIndex("description"))
     }
 
     class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
-
 
         var itemName: TextView? = null
         var itemDesc: TextView? = null
