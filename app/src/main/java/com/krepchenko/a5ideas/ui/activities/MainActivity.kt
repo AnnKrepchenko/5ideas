@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), OnRecyclerViewItemClick, LoaderManager.LoaderCallbacks<Cursor> {
 
-
     private val LOADER_ID = 1
     private var ideaAdapter: IdeaAdapter? = null
 
@@ -36,6 +35,10 @@ class MainActivity : BaseActivity(), OnRecyclerViewItemClick, LoaderManager.Load
 
     override fun onLoaderReset(p0: Loader<Cursor>?) {
         ideaAdapter?.swapCursor(null)
+    }
+
+    private fun reloadAdapter(){
+        loaderManager.getLoader<Cursor>(LOADER_ID).forceLoad()
     }
 
     override fun onLoadFinished(p0: Loader<Cursor>?, p1: Cursor?) {

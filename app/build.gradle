@@ -33,6 +33,7 @@ dependencies {
     compile 'com.android.support:cardview-v7:24.2.+'
     compile 'com.android.support:recyclerview-v7:24.2.+'
     compile 'com.novoda:sqlite-provider:2.0.0'
+    compile 'com.facebook.stetho:stetho:1.4.1'
 }
 repositories {
     mavenCentral()
@@ -41,14 +42,4 @@ repositories {
 sqliteAccess {
     migrationsDir 'src/main/assets/migrations'
     packageName 'com.krepchenko.a5ideas'
-    generator { database, basedir ->
-        def access = access(database)
-        access.tables.each { table ->
-            table.fields.each { field ->
-                if (field.type == 'Integer') {field.type = 'Long'; field.cursorType = 'Long'}
-                if (field.type == 'int') {field.type = 'long'; field.cursorType = 'Long'}
-            }
-        }
-        generateClass(file('code.template'), access, "DB", packageName, basedir)
-    }
 }
