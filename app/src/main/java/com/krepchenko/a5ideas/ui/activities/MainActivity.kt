@@ -20,8 +20,13 @@ class MainActivity : BaseActivity(), OnRecyclerViewItemClick, LoaderManager.Load
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        ideaAdapter = IdeaAdapter(this,null,this)
+        ideaAdapter = IdeaAdapter(this,this)
         main_rv.adapter = ideaAdapter
+        loaderManager.initLoader(LOADER_ID, Bundle.EMPTY,this)
+    }
+
+    override fun onResume() {
+        super.onResume()
         loaderManager.initLoader(LOADER_ID, Bundle.EMPTY,this)
     }
 
@@ -43,6 +48,7 @@ class MainActivity : BaseActivity(), OnRecyclerViewItemClick, LoaderManager.Load
 
     override fun onLoadFinished(p0: Loader<Cursor>?, p1: Cursor?) {
         ideaAdapter?.swapCursor(p1)
+        reloadAdapter()
     }
 }
 
