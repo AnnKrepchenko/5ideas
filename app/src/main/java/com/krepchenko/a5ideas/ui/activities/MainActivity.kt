@@ -5,6 +5,7 @@ import android.content.CursorLoader
 import android.content.Loader
 import android.database.Cursor
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.krepchenko.a5ideas.R
 import com.krepchenko.a5ideas.ui.adapters.IdeaAdapter
@@ -22,6 +23,7 @@ class MainActivity : BaseActivity(), OnRecyclerViewItemClick, LoaderManager.Load
         setContentView(R.layout.activity_main)
         ideaAdapter = IdeaAdapter(this,this)
         main_rv.adapter = ideaAdapter
+        main_rv.layoutManager = LinearLayoutManager(this)
         loaderManager.initLoader(LOADER_ID, Bundle.EMPTY,this)
     }
 
@@ -48,7 +50,6 @@ class MainActivity : BaseActivity(), OnRecyclerViewItemClick, LoaderManager.Load
 
     override fun onLoadFinished(p0: Loader<Cursor>?, p1: Cursor?) {
         ideaAdapter?.swapCursor(p1)
-        reloadAdapter()
     }
 }
 
