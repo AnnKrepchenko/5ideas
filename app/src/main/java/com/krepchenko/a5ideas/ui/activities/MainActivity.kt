@@ -6,25 +6,42 @@ import android.content.Loader
 import android.database.Cursor
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.Toolbar
 import android.view.View
 import com.krepchenko.a5ideas.R
+import com.krepchenko.a5ideas.ui.activities.base.BaseToolbarActivity
 import com.krepchenko.a5ideas.ui.adapters.IdeaAdapter
 import com.krepchenko.a5ideas.ui.adapters.OnRecyclerViewItemClick
 import com.krepchenko.a5ideas.ui.db.IdeaContentProvider
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : BaseActivity(), OnRecyclerViewItemClick, LoaderManager.LoaderCallbacks<Cursor> {
+class MainActivity : BaseToolbarActivity(),View.OnClickListener, OnRecyclerViewItemClick, LoaderManager.LoaderCallbacks<Cursor> {
+
 
     private val LOADER_ID = 1
     private var ideaAdapter: IdeaAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        initViews()
+        loaderManager.initLoader(LOADER_ID, Bundle.EMPTY,this)
+    }
+
+    override fun setContentView(): Int {
+       return R.layout.activity_main
+    }
+
+    override fun setToolbar(): Toolbar {
+        toolbar.title = getString(R.string.app_name)
+        return toolbar
+    }
+
+    fun initViews(){
         ideaAdapter = IdeaAdapter(this,this)
         main_rv.adapter = ideaAdapter
         main_rv.layoutManager = LinearLayoutManager(this)
-        loaderManager.initLoader(LOADER_ID, Bundle.EMPTY,this)
+        main_fab.setOnClickListener(this)
     }
 
     override fun onResume() {
@@ -34,6 +51,17 @@ class MainActivity : BaseActivity(), OnRecyclerViewItemClick, LoaderManager.Load
 
     override fun onItemClick(position: Int, view: View) {
         toast("click" + position)
+        //TODO open IdeaActivity
+    }
+
+    override fun onClick(v: View?) {
+        when(v!!.id){
+            R.id.main_fab -> createNew()
+        }
+    }
+
+    fun createNew(){
+        navigate<IdeaActivity>()
     }
 
     override fun onCreateLoader(p0: Int, p1: Bundle?): Loader<Cursor> {

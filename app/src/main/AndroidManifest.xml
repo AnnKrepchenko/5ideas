@@ -9,12 +9,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activities.MainActivity">
-        </activity>
+        <activity android:name=".ui.activities.MainActivity" />
         <activity
             android:name=".ui.activities.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_splash"
+            android:label="@string/app_name"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,11 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.BaseActivity"></activity>
-        
+        <activity android:name=".ui.activities.IdeaActivity"></activity>
+
         <provider
-            android:authorities="com.krepchenko.a5ideas"
-            android:name=".ui.db.IdeaContentProvider"/>
+            android:name=".ui.db.IdeaContentProvider"
+            android:authorities="com.krepchenko.a5ideas" />
+
     </application>
 
 </manifest>
