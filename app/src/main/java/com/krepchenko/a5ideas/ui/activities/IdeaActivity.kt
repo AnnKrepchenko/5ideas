@@ -6,7 +6,10 @@ import android.view.Menu
 import android.view.MenuItem
 import com.krepchenko.a5ideas.R
 import com.krepchenko.a5ideas.ui.activities.base.BaseToolbarActivity
+import com.krepchenko.a5ideas.ui.db.DbManager
+import com.krepchenko.a5ideas.ui.db.Idea
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_idea.*
 
 class IdeaActivity : BaseToolbarActivity() {
 
@@ -42,7 +45,8 @@ class IdeaActivity : BaseToolbarActivity() {
     }
 
     fun save() {
-        //TODO save
+        val idea: Idea = Idea(idea_name_et.text.toString(), idea_desc_et.text.toString())
+        DbManager.insertIdea(contentResolver, idea)
     }
 
 }

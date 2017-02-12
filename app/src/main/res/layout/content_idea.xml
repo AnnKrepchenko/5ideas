@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,7 +15,29 @@
     tools:context="com.krepchenko.a5ideas.ui.activities.IdeaActivity"
     tools:showIn="@layout/activity_idea">
 
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/idea_name_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name">
 
+        <EditText
+            android:id="@+id/idea_name_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/idea_desc_til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/description">
+
+        <EditText
+            android:id="@+id/idea_desc_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
 
 
 </LinearLayout>
