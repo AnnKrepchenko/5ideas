@@ -1,6 +1,5 @@
 package com.krepchenko.a5ideas.ui.activities.base
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
 
@@ -13,4 +12,6 @@ abstract class BaseToolbarActivity : BaseActivity() {
     }
 
     abstract fun setToolbar() : Toolbar
+
+
 }

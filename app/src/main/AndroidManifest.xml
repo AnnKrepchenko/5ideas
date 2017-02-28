@@ -21,12 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.IdeaActivity"></activity>
+        <activity android:name=".ui.activities.CreateIdeaActivity" />
 
         <provider
             android:name=".ui.db.IdeaContentProvider"
             android:authorities="com.krepchenko.a5ideas" />
 
+        <activity android:name=".ui.activities.ViewIdeaActivity" />
     </application>
 
 </manifest>

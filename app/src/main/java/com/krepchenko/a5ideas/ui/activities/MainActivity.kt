@@ -13,6 +13,7 @@ import com.krepchenko.a5ideas.ui.activities.base.BaseToolbarActivity
 import com.krepchenko.a5ideas.ui.adapters.IdeaAdapter
 import com.krepchenko.a5ideas.ui.adapters.OnRecyclerViewItemClick
 import com.krepchenko.a5ideas.ui.db.IdeaContentProvider
+import com.krepchenko.a5ideas.ui.utils.Consts
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
@@ -51,7 +52,9 @@ class MainActivity : BaseToolbarActivity(),View.OnClickListener, OnRecyclerViewI
 
     override fun onItemClick(position: Int, view: View) {
         toast("click" + position)
-        //TODO open IdeaActivity
+        val bundle = Bundle()
+        bundle.putInt(Consts.EXTRA_ID, ideaAdapter!!.getItemId(position).toInt())
+        navigate<ViewIdeaActivity>(bundle)
     }
 
     override fun onClick(v: View?) {
@@ -61,7 +64,7 @@ class MainActivity : BaseToolbarActivity(),View.OnClickListener, OnRecyclerViewI
     }
 
     fun createNew(){
-        navigate<IdeaActivity>()
+        navigate<CreateIdeaActivity>()
     }
 
     override fun onCreateLoader(p0: Int, p1: Bundle?): Loader<Cursor> {

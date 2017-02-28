@@ -28,12 +28,12 @@ class IdeaAdapter(context: Context?, onRecyclerItemClick: OnRecyclerViewItemClic
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, cursor: Cursor?) {
-        viewHolder?.itemName?.text = cursor?.getString(cursor?.getColumnIndex("name"))
-        viewHolder?.itemDesc?.text = cursor?.getString(cursor?.getColumnIndex("description"))
+        viewHolder.itemName?.text = cursor?.getString(cursor.getColumnIndex("name"))
+        viewHolder.itemDesc?.text = cursor?.getString(cursor.getColumnIndex("description"))
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        super.onBindViewHolder(viewHolder!!,position)
+        super.onBindViewHolder(viewHolder, position)
         Log.d("Bind",position.toString())
     }
 
