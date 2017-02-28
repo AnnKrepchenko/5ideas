@@ -51,7 +51,6 @@ class MainActivity : BaseToolbarActivity(), View.OnClickListener, OnRecyclerView
     }
 
     override fun onItemClick(position: Int, view: View) {
-        toast("click" + position)
         val bundle = Bundle()
         bundle.putInt(Consts.EXTRA_ID, ideaAdapter!!.getItemId(position).toInt())
         navigate<ViewIdeaActivity>(bundle)
