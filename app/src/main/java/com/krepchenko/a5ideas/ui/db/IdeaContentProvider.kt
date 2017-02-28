@@ -9,9 +9,9 @@ import novoda.lib.sqliteprovider.provider.SQLiteContentProviderImpl
 /**
  * Created by Ann
  */
-class IdeaContentProvider: SQLiteContentProviderImpl() {
-    companion object{
-        val AUTHORITY:String = "content://com.krepchenko.a5ideas/"
+class IdeaContentProvider : SQLiteContentProviderImpl() {
+    companion object {
+        val AUTHORITY: String = "content://com.krepchenko.a5ideas/"
         val IDEAS: Uri = Uri.parse(AUTHORITY).buildUpon().appendPath(DB.Tables.Ideas).build()
     }
 

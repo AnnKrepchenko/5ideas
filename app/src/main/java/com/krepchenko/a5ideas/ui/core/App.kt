@@ -6,7 +6,7 @@ import com.facebook.stetho.Stetho
 /**
  * Created by Ann
  */
-class App : Application(){
+class App : Application() {
     override fun onCreate() {
         super.onCreate()
         Stetho.initializeWithDefaults(this)

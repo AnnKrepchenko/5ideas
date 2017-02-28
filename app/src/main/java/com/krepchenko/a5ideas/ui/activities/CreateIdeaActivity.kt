@@ -40,7 +40,7 @@ class CreateIdeaActivity : BaseIdeaActivity() {
 
     }
 
-     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.action_accept -> {
                 save()
@@ -52,7 +52,7 @@ class CreateIdeaActivity : BaseIdeaActivity() {
     }
 
     fun save() {
-        val idea: Idea = Idea(intent.getIntExtra(Consts.EXTRA_ID, -1),idea_name_et.text.toString(), idea_desc_et.text.toString())
+        val idea: Idea = Idea(intent.getIntExtra(Consts.EXTRA_ID, -1), idea_name_et.text.toString(), idea_desc_et.text.toString())
         DbManager.insertIdea(contentResolver, idea)
     }
 

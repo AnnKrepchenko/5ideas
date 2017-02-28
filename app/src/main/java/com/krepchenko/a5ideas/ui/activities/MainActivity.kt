@@ -17,7 +17,7 @@ import com.krepchenko.a5ideas.ui.utils.Consts
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : BaseToolbarActivity(),View.OnClickListener, OnRecyclerViewItemClick, LoaderManager.LoaderCallbacks<Cursor> {
+class MainActivity : BaseToolbarActivity(), View.OnClickListener, OnRecyclerViewItemClick, LoaderManager.LoaderCallbacks<Cursor> {
 
 
     private val LOADER_ID = 1
@@ -26,11 +26,11 @@ class MainActivity : BaseToolbarActivity(),View.OnClickListener, OnRecyclerViewI
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViews()
-        loaderManager.initLoader(LOADER_ID, Bundle.EMPTY,this)
+        loaderManager.initLoader(LOADER_ID, Bundle.EMPTY, this)
     }
 
     override fun setContentView(): Int {
-       return R.layout.activity_main
+        return R.layout.activity_main
     }
 
     override fun setToolbar(): Toolbar {
@@ -38,8 +38,8 @@ class MainActivity : BaseToolbarActivity(),View.OnClickListener, OnRecyclerViewI
         return toolbar
     }
 
-    fun initViews(){
-        ideaAdapter = IdeaAdapter(this,this)
+    fun initViews() {
+        ideaAdapter = IdeaAdapter(this, this)
         main_rv.adapter = ideaAdapter
         main_rv.layoutManager = LinearLayoutManager(this)
         main_fab.setOnClickListener(this)
@@ -47,7 +47,7 @@ class MainActivity : BaseToolbarActivity(),View.OnClickListener, OnRecyclerViewI
 
     override fun onResume() {
         super.onResume()
-        loaderManager.initLoader(LOADER_ID, Bundle.EMPTY,this)
+        loaderManager.initLoader(LOADER_ID, Bundle.EMPTY, this)
     }
 
     override fun onItemClick(position: Int, view: View) {
@@ -58,24 +58,24 @@ class MainActivity : BaseToolbarActivity(),View.OnClickListener, OnRecyclerViewI
     }
 
     override fun onClick(v: View?) {
-        when(v!!.id){
+        when (v!!.id) {
             R.id.main_fab -> createNew()
         }
     }
 
-    fun createNew(){
+    fun createNew() {
         navigate<CreateIdeaActivity>()
     }
 
     override fun onCreateLoader(p0: Int, p1: Bundle?): Loader<Cursor> {
-        return CursorLoader(this,IdeaContentProvider.IDEAS,null,null,null,null)
+        return CursorLoader(this, IdeaContentProvider.IDEAS, null, null, null, null)
     }
 
     override fun onLoaderReset(p0: Loader<Cursor>?) {
         ideaAdapter?.swapCursor(null)
     }
 
-    private fun reloadAdapter(){
+    private fun reloadAdapter() {
         loaderManager.getLoader<Cursor>(LOADER_ID).forceLoad()
     }
 

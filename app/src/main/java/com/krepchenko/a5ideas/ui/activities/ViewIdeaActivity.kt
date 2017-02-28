@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.content_view_idea.*
 
 class ViewIdeaActivity : BaseIdeaActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViews()
@@ -30,7 +29,7 @@ class ViewIdeaActivity : BaseIdeaActivity() {
     fun initViews() {
         enableBack()
         val bundle = Bundle()
-        bundle.putBoolean(Consts.EXTRA_EDIT,true)
+        bundle.putBoolean(Consts.EXTRA_EDIT, true)
         bundle.putInt(Consts.EXTRA_ID, intent.getIntExtra(Consts.EXTRA_ID, -1))
         fab_edit.setOnClickListener { navigate<CreateIdeaActivity>(bundle) }
     }
