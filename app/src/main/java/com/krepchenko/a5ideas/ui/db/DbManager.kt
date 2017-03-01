@@ -16,6 +16,9 @@ open class DbManager {
 
         private fun ideaToContentValues(idea: Idea): ContentValues {
             val contentValues: ContentValues = ContentValues()
+            if(idea.id>0){
+                contentValues.put(DB.Columns.Ideas.Id,idea.id)
+            }
             contentValues.put(DB.Columns.Ideas.Name, idea.name)
             contentValues.put(DB.Columns.Ideas.Description, idea.description)
             return contentValues

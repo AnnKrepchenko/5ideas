@@ -38,6 +38,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'com.novoda:sqlite-provider:2.0.0'
     compile 'com.facebook.stetho:stetho:1.4.1'
+    compile 'com.github.Mariovc:ImagePicker:1.0.5'
 }
 repositories {
     mavenCentral()
