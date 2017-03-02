@@ -6,5 +6,5 @@ package com.krepchenko.a5ideas.ui.utils
 object Consts {
         val EXTRA_ID = "id"
         val EXTRA_NAME = "name"
-        val EXTRA_EDIT = "edit"
+        val EXTRA_EDIT = "editInit"
 }

@@ -21,6 +21,7 @@ open class DbManager {
             }
             contentValues.put(DB.Columns.Ideas.Name, idea.name)
             contentValues.put(DB.Columns.Ideas.Description, idea.description)
+            contentValues.put(DB.Columns.Ideas.PictureUri, idea.pictureUri)
             return contentValues
         }
     }

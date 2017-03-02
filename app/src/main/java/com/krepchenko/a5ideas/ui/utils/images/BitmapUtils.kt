@@ -1,10 +1,9 @@
-package com.krepchenko.a5ideas.ui.utils
+package com.krepchenko.a5ideas.ui.utils.images
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.util.Log
 import java.io.File
 import java.util.*
 
@@ -14,7 +13,7 @@ import java.util.*
 object BitmapUtils {
 
 
-    fun bitmapToUriConverter(context:Context,bitmap: Bitmap): Uri {
+    fun bitmapToUriConverter(context: Context, bitmap: Bitmap?): Uri? {
         var uri: Uri? = null
         try {
             val options = BitmapFactory.Options()
@@ -24,11 +23,10 @@ object BitmapUtils {
             val file = File(context.filesDir, "Image"
                     + Random().nextInt() + ".jpeg")
             val out = context.openFileOutput(file.name,
-                    Context.MODE_WORLD_READABLE)
+                    Context.MODE_PRIVATE)
             newBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
             out.flush()
             out.close()
-            //get absolute path
             val realPath = file.absolutePath
             val f = File(realPath)
             uri = Uri.fromFile(f)
@@ -36,7 +34,6 @@ object BitmapUtils {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
-        return uri!!
+        return uri
     }
 }
