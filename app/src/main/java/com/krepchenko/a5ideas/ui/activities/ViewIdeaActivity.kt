@@ -1,6 +1,9 @@
 package com.krepchenko.a5ideas.ui.activities
 
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.v7.widget.Toolbar
 import android.text.SpannableStringBuilder
 import com.krepchenko.a5ideas.DB
@@ -28,10 +31,12 @@ class ViewIdeaActivity : BaseIdeaActivity() {
 
     fun initViews() {
         enableBack()
-        val bundle = Bundle()
-        bundle.putBoolean(Consts.EXTRA_EDIT, true)
-        bundle.putInt(Consts.EXTRA_ID, intent.getIntExtra(Consts.EXTRA_ID, -1))
-        fab_edit.setOnClickListener { navigate<CreateIdeaActivity>(bundle) }
+        fab_edit.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putBoolean(Consts.EXTRA_EDIT, true)
+            bundle.putInt(Consts.EXTRA_ID, intent.getIntExtra(Consts.EXTRA_ID, -1))
+            navigate < CreateIdeaActivity >(bundle)
+        }
     }
 
     fun load() {
@@ -43,6 +48,7 @@ class ViewIdeaActivity : BaseIdeaActivity() {
     override fun setToViews(idea: DB.Ideas) {
         toolbar_layout.title = idea.name
         view_desc_tv.text = SpannableStringBuilder(idea.description)
+        header_image_view.setImageBitmap(MediaStore.Images.Media.getBitmap(contentResolver, Uri.parse(idea.pictureUri)))
     }
 
 }

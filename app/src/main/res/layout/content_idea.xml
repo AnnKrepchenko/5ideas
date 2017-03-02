@@ -42,7 +42,7 @@
 
     <ImageView
         android:id="@+id/idea_image_iv"
-        android:background="@android:drawable/btn_star_big_off"
+        android:background="@android:drawable/ic_menu_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>
